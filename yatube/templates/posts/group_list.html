@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Записи сообщества {{ group }}{% endblock %}
-{% block heading %}Записи сообщества {{ group }}{% endblock %}
+{% block heading %}{{ group.title }}{% endblock %}
   {% block content %}
     <p>
-      <br>Группа: {{ group.title|title }}
-      <br>Описание группы: {{ group.description|truncatechars:10|linebreaksbr }}
+      Описание группы: {{ group.description|linebreaksbr }}
     </p>
     {% for post in posts %}
       {% include "includes/article.html" %}
