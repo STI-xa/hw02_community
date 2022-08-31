@@ -6,7 +6,7 @@ from .models import Group, Post
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = group.group.all()[:settings.NUM_POSTS_ON_PAGE]
+    posts = group.groups.all()[:settings.NUM_POSTS_ON_PAGE]
     context = {
         'group': group,
         'posts': posts,

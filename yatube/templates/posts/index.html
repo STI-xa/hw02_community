@@ -1,20 +1,11 @@
 {% extends "base.html" %}
-<title>
-  {% block  title %}Последние обновления на сайте{% endblock %}
-</title>
-<main>
+{% block  title %}Последние обновления на сайте{% endblock %}
+{% block heading %}Последние обновления на сайте{% endblock %}
   {% block content %}
-    <h1>Последние обновления на сайте</h1>
     {% for post in posts %}
-      <p>
-        <br>Группа: {{ post.group.title|title }}</br>
-        Описание группы: {{ post.group.description|truncatechars:10 }}
-      </p>
       <article>
-        {% include "includes/article.html" with index=True %}
+        {% include "includes/article.html" with group_link_on_page=True %}
       <article>
       {% if not forloop.last %}<hr>{% endif %}
     {% endfor %}
   {% endblock %}
-  </main>
-  {% include "includes/footer.html" %}

@@ -1,18 +1,13 @@
 {% extends "base.html" %}
-<title>{% block title %}Записи сообщества {{ group }}{% endblock %}</title>
-<main>
+{% block title %}Записи сообщества {{ group }}{% endblock %}
+{% block heading %}Записи сообщества {{ group }}{% endblock %}
   {% block content %}
-    <h1>Записи сообщества {{ group }}</h1>
+    <p>
+      <br>Группа: {{ group.title|title }}
+      <br>Описание группы: {{ group.description|truncatechars:10|linebreaksbr }}
+    </p>
     {% for post in posts %}
-      <p>
-        <br>Группа: {{ post.group.title|title }}</br>
-        Описание группы: {{ post.group.description|truncatechars:10 }}
-      </p>
-      <article>
-        {% include "includes/article.html" with index=False %}
-      <article>
+      {% include "includes/article.html" %}
       {% if not forloop.last %}<hr>{% endif %}
     {% endfor %}
   {% endblock %}
-</main>
-{% include "includes/footer.html" %}
